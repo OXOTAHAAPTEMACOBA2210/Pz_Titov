@@ -5,9 +5,21 @@ from docx.shared import Pt
 # Очищенный скрипт для создания отчетов
 def create_report(filename, title, code_file, code_text):
     doc = docx.Document()
-    doc.add_heading(title, 0)
+    
+    # Заголовок как обычный параграф, чтобы не было стилей темы
+    p = doc.add_paragraph()
+    run = p.add_run(title)
+    run.bold = True
+    run.font.size = Pt(16)
+    run.font.color.rgb = RGBColor(0, 0, 0) # ЧЕРНЫЙ
+    
     doc.add_paragraph("Студент: Кузьменко В.А., группа ДЭ 21-24")
-    doc.add_heading("Код:", 1)
+    
+    p = doc.add_paragraph()
+    run = p.add_run("Код:")
+    run.bold = True
+    run.font.color.rgb = RGBColor(0, 0, 0) # ЧЕРНЫЙ
+    
     doc.add_paragraph(code_text)
     doc.save(filename)
 
