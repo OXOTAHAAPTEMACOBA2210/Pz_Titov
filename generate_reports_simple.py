@@ -1,6 +1,6 @@
 import os
 import docx
-from docx.shared import Pt
+from docx.shared import Pt, RGBColor
 
 # Очищенный скрипт для создания отчетов
 def create_report(filename, title, code_file, code_text):
