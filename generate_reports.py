@@ -894,27 +894,34 @@ doc4.save(os.path.join(BASE_DIR, "Отчет_ПЗ4_Титов.docx"))
 print("Отчет_ПЗ4_Титов.docx created successfully!")
 
 # ==============================================================================
-# REPORT 5: Отчет_ПЗ5_Титов.docx
+# REPORT 5: Отчет_ПЗ5_Кузьменко.docx
 # ==============================================================================
 print("Creating Отчет_ПЗ5_Кузьменко.docx...")
 doc5 = docx.Document()
-# (Логика ПЗ 5...)
+add_styled_heading(doc5, "ОТЧЁТ ПО ПРАКТИЧЕСКОЙ РАБОТЕ № 5", level=1)
+doc5.add_paragraph("Тема: CRUD-приложение на Python (sqlite3)")
+doc5.add_paragraph("Реализованы функции: Create, Read, Update, Delete для таблицы товаров.")
+add_code_block(doc5, open('pz5_crud.py', encoding='utf-8').read())
 doc5.save(os.path.join(BASE_DIR, "Отчет_ПЗ5_Кузьменко.docx"))
 
 # ==============================================================================
-# REPORT 6: Отчет_ПЗ6_Титов.docx
+# REPORT 6: Отчет_ПЗ6_Кузьменко.docx
 # ==============================================================================
 print("Creating Отчет_ПЗ6_Кузьменко.docx...")
 doc6 = docx.Document()
-# (Логика ПЗ 6...)
+add_styled_heading(doc6, "ОТЧЁТ ПО ПРАКТИЧЕСКОЙ РАБОТЕ № 6", level=1)
+doc6.add_paragraph("Тема: Аналитическая статистика на Python")
+add_code_block(doc6, open('pz6_stats.py', encoding='utf-8').read())
 doc6.save(os.path.join(BASE_DIR, "Отчет_ПЗ6_Кузьменко.docx"))
 
 # ==============================================================================
-# REPORT 7: Отчет_ПЗ7_Титов.docx
+# REPORT 7: Отчет_ПЗ7_Кузьменко.docx
 # ==============================================================================
 print("Creating Отчет_ПЗ7_Кузьменко.docx...")
 doc7 = docx.Document()
-# (Логика ПЗ 7...)
+add_styled_heading(doc7, "ОТЧЁТ ПО ПРАКТИЧЕСКОЙ РАБОТЕ № 7", level=1)
+doc7.add_paragraph("Тема: Система учета платной парковки")
+add_code_block(doc7, open('pz7_parking.sql', encoding='utf-8').read())
 doc7.save(os.path.join(BASE_DIR, "Отчет_ПЗ7_Кузьменко.docx"))
 
 print("All reports created successfully!")
