@@ -3,24 +3,32 @@ import docx
 from docx.shared import Pt, RGBColor
 
 # Очищенный скрипт для создания отчетов
-def create_report(filename, title, code_file, code_text):
+# Упрощенная генерация отчета: только суть
+def create_report(filename, title, code_file, code_text, screenshots=None):
     doc = docx.Document()
     
-    # Заголовок как обычный параграф, чтобы не было стилей темы
+    # Заголовок
     p = doc.add_paragraph()
     run = p.add_run(title)
     run.bold = True
-    run.font.size = Pt(16)
-    run.font.color.rgb = RGBColor(0, 0, 0) # ЧЕРНЫЙ
+    run.font.size = Pt(14)
     
     doc.add_paragraph("Студент: Кузьменко В.А., группа ДЭ 21-24")
     
-    p = doc.add_paragraph()
-    run = p.add_run("Код:")
-    run.bold = True
-    run.font.color.rgb = RGBColor(0, 0, 0) # ЧЕРНЫЙ
+    # Краткое описание (вместо всего кода)
+    doc.add_heading("Анализ реализации:", level=1)
+    doc.add_paragraph(f"В данной работе реализованы ключевые SQL-запросы и логика Python-скрипта {code_file}.")
     
-    doc.add_paragraph(code_text)
+    # Здесь можно вставить только критически важные части кода, если нужно
+    doc.add_heading("Ключевые фрагменты:", level=1)
+    doc.add_paragraph("...") 
+    
+    if screenshots:
+        doc.add_heading("Результаты (скриншоты):", level=1)
+        for shot in screenshots:
+            if os.path.exists(os.path.join(SHOTS_DIR, shot)):
+                doc.add_picture(os.path.join(SHOTS_DIR, shot), width=Inches(5))
+                
     doc.save(filename)
 
 BASE_DIR = "."
